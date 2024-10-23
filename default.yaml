@@ -1,0 +1,16 @@
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: allow-10-0-0-0-to-cluster
+  namespace: kube-system
+spec:
+  endpointSelector: {}
+  ingress:
+  - fromCIDR:
+    - 10.0.0.0/8
+    toPorts:
+    - ports:
+      - port: "80"
+        protocol: TCP
+      - port: "443"
+        protocol: TCP
